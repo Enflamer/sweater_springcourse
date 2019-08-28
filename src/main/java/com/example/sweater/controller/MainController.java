@@ -53,7 +53,7 @@ public class MainController {
             //System.out.println(node.getData());
         }
         for(MyTreeNode node : root.getChildren()) {
-            System.out.println(node.getData());
+            //System.out.println(node.getData());
         }
         /*
         if (filter != null && !filter.isEmpty()) {
