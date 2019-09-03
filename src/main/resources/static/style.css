@@ -1,3 +1,11 @@
 body{
     color: #113;
 }
+.important {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.blue {
+    color: blue;
+}

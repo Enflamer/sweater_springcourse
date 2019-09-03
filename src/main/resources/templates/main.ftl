@@ -16,7 +16,24 @@
     <link href="mm-folder.css" rel="stylesheet"/>
 </head>
 <body>
+<a  class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Function list
+</a>
 
+<div class="collapse" id="collapseExample">
+    <div class="form-group">
+        <form method="post" action="/main">
+            <input class="form-control" type="text" name="text" placeholder="Тэг">
+            <input class="form-control" type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <button class="btn btn-primary" type="submit">Добавить</button>
+        </form>
+        <form method="post" action="/main1">
+            <input class="form-control" type="text" name="text" placeholder="Тэг">
+            <input class="form-control" type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <button class="btn btn-primary" type="submit">Удалить</button>
+        </form>
+    </div>
+</div>
     <form method="get" action="/main">
         <div class="container mt-2">
             <div class="row">
@@ -24,18 +41,17 @@
                     <nav class="nav">
                         <ul class="metisFolder metismenu">
                             <li>
-                                <a href="#"><span class="fa fa-fw fa-folder-o"></span> Root</a>
-                                <ul >
-                                    <li><a href="#"><span class="fa fa-fw fa-file"></span> Child</a></li>
-                                    <ul >
-                                        <li class="metisFolder metismenu"><a href="#"><span class="fa fa-fw fa-folder-o"></span> GrandChild</a></li>
-                                        <ul>
-                                            <li><a href="#"><span class="fa fa-fw fa-file"></span> Child</a></li>
-                                        </ul>
-                                    </ul>
-                                    <li><a href="#"><span class="fa fa-fw fa-file-o"></span> File 2</a></li>
-                                    <li><a href="#"><span class="fa fa-fw fa-file-zip-o"></span> File zip</a></li>
-                                    <li><a href="#"><span class="fa fa-fw fa-file"></span> File 1</a></li>
+                                <a href="#"><span class="fa fa-fw fa-folder-o"></span> Root </a>
+                                <ul>
+                                    <#list list>
+                                        <#items as x>
+                                            <div class="out overout">
+                                                <li><a href="#"><span class="fa fa-fw fa-file"></span>${x}</a></li>
+                                                <div class="in">
+                                                </div>
+                                            </div>
+                                        </#items>
+                                    </#list>
                                 </ul>
                             </li>
                         </ul>
@@ -54,6 +70,23 @@
             toggle: false
         })
     </script>
+    <script>
+        var i = 0;
+        $( "div.overout" )
+            .mouseover(function() {
+                i += 1;
+                $( this ).find( "span" ).attr('class', 'fa fa-fw fa-file text-success');
+               // document.getElementById("1").style.visibility = "visible";
+            })
+            .mouseout(function() {
+                $( this ).find( "span" ).attr('class', 'fa fa-fw fa-file');
+                //document.getElementById("1").style.visibility = "hidden";
+            });
+
+    </script>
+
+
+
 </body>
 </html>
 </@c.page>
